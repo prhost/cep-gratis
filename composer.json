@@ -1,5 +1,5 @@
 {
-    "name": "jansenfelipe/cep-gratis",
+    "name": "prhost/cep-gratis",
     "description": "Com esse pacote você poderá realizar consultas de CEP gratuitamente.",
     "keywords": ["cep", "correios", "php"],
     "license": "MIT",
@@ -7,12 +7,16 @@
         {
             "name": "Jansen Felipe",
             "email": "jansen.felipe@gmail.com"
+        },
+        {
+            "name": "Kallef Alexandre",
+            "email": "prhost@prhost.com.br"
         }
     ],
     "require": {
-        "php": ">=5.5",
-        "symfony/dom-crawler": "^3.2",
-        "symfony/css-selector": "^3.2"
+        "php": ">=7.1",
+        "symfony/dom-crawler": "^4.3",
+        "symfony/css-selector": "^4.3"
     },
     "autoload": {
         "psr-4": {
@@ -25,12 +29,8 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.0-dev"
+            "dev-master": "1.0-dev"
         }
-    },
-    "suggest": {
-        "jansenfelipe/cnpj-gratis": "Permite consulta de CNPJ no site da receita",
-        "jansenfelipe/cpf-gratis": "Permite consulta de CPF no site da receita"
     },
     "minimum-stability": "dev"
 }
