@@ -11,7 +11,7 @@ class ViaCepProvider implements ProviderContract
     /**
      * @return Address|null
      */
-    public function getAddress($cep, HttpClientContract $client)
+    public function getAddress($cep, HttpClientContract $client, array $option = [])
     {
         $response = $client->get('https://viacep.com.br/ws/'.$cep.'/json/');
 

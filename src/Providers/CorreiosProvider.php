@@ -12,34 +12,40 @@ class CorreiosProvider implements ProviderContract
     /**
      * @return Address
      */
-    public function getAddress($cep, HttpClientContract $client)
+    public function getAddress($cep, HttpClientContract $client, array $option = [])
     {
         $response = $client->post('http://www.buscacep.correios.com.br/sistemas/buscacep/detalhaCEP.cfm', [
             'CEP' => $cep,
         ]);
 
         if (!is_null($response)) {
-            $crawler = new Crawler($response);
+            try {
 
-            $message = $crawler->filter('div.ctrlcontent p')->html();
+                $crawler = new Crawler($response);
 
-            if ($message == 'DADOS ENCONTRADOS COM SUCESSO.') {
-                $tr = $crawler->filter('table.tmptabela');
+                $message = $crawler->filter('div.ctrlcontent p')->html();
 
-                $params['zipcode'] = $cep;
-                $params['street'] = $tr->filter('tr:nth-child(1) td:nth-child(2)')->html();
-                $params['neighborhood'] = $tr->filter('tr:nth-child(2) td:nth-child(2)')->html();
+                if ($message == 'DADOS ENCONTRADOS COM SUCESSO.') {
+                    $tr = $crawler->filter('table.tmptabela');
 
-                $aux = explode('/', $tr->filter('tr:nth-child(3) td:nth-child(2)')->html());
-                $params['city'] = $aux[0];
-                $params['state'] = $aux[1];
+                    $params['zipcode'] = $cep;
+                    $params['street'] = $tr->filter('tr:nth-child(1) td:nth-child(2)')->html();
+                    $params['neighborhood'] = $tr->filter('tr:nth-child(2) td:nth-child(2)')->html();
 
-                $aux = explode(' - ', $params['street']);
-                $params['street'] = (count($aux) == 2) ? $aux[0] : $params['street'];
+                    $aux = explode('/', $tr->filter('tr:nth-child(3) td:nth-child(2)')->html());
+                    $params['city'] = $aux[0];
+                    $params['state'] = $aux[1];
 
-                return Address::create(array_map(function ($item) {
-                    return urldecode(str_replace('%C2%A0', '', urlencode($item)));
-                }, $params));
+                    $aux = explode(' - ', $params['street']);
+                    $params['street'] = (count($aux) == 2) ? $aux[0] : $params['street'];
+
+                    return Address::create(array_map(function ($item) {
+                        return urldecode(str_replace('%C2%A0', '', urlencode($item)));
+                    }, $params));
+                }
+
+            } catch (\Exception $exception) {
+                return null;
             }
         }
     }
