@@ -1,36 +1,41 @@
 {
-    "name": "prhost/cep-gratis",
-    "description": "Com esse pacote você poderá realizar consultas de CEP gratuitamente.",
-    "keywords": ["cep", "correios", "php"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Jansen Felipe",
-            "email": "jansen.felipe@gmail.com"
-        },
-        {
-            "name": "Kallef Alexandre",
-            "email": "prhost@prhost.com.br"
-        }
-    ],
-    "require": {
-        "php": ">=7.1",
-        "symfony/dom-crawler": "^4.3",
-        "symfony/css-selector": "^4.3"
+  "name": "prhost/cep-gratis",
+  "description": "Com esse pacote você poderá realizar consultas de CEP gratuitamente.",
+  "keywords": [
+    "cep",
+    "correios",
+    "php"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jansen Felipe",
+      "email": "jansen.felipe@gmail.com"
     },
-    "autoload": {
-        "psr-4": {
-            "JansenFelipe\\CepGratis\\": "src/",
-            "JansenFelipe\\CepGratis\\Tests\\": "tests/src/"
-        }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.0"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        }
-    },
-    "minimum-stability": "dev"
+    {
+      "name": "Kallef Alexandre",
+      "email": "prhost@prhost.com.br"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "symfony/dom-crawler": "^4.3",
+    "symfony/css-selector": "^4.3",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "JansenFelipe\\CepGratis\\": "src/",
+      "JansenFelipe\\CepGratis\\Tests\\": "tests/src/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "minimum-stability": "dev"
 }
