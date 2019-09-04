@@ -82,6 +82,10 @@ class CurlHttpClient implements HttpClientContract
             CURLOPT_RETURNTRANSFER => true,
         ]);
 
+        if ($this->headers) {
+            curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers);
+        }
+
         if (!empty($data)) {
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));

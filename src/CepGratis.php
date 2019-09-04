@@ -7,8 +7,11 @@ use JansenFelipe\CepGratis\Contracts\HttpClientContract;
 use JansenFelipe\CepGratis\Contracts\ProviderContract;
 use JansenFelipe\CepGratis\Exceptions\CepGratisInvalidParameterException;
 use JansenFelipe\CepGratis\Exceptions\CepGratisTimeoutException;
+use JansenFelipe\CepGratis\Providers\CepAbertoProvider;
 use JansenFelipe\CepGratis\Providers\CorreiosProvider;
+use JansenFelipe\CepGratis\Providers\RepublicaVirtualProvider;
 use JansenFelipe\CepGratis\Providers\ViaCepProvider;
+use JansenFelipe\CepGratis\Providers\WidenetProvider;
 
 /**
  * Class to query CEP.
@@ -31,6 +34,11 @@ class CepGratis
     private $timeout = 5;
 
     /**
+     * @var array
+     */
+    protected $options = [];
+
+    /**
      * CepGratis constructor.
      */
     public function __construct()
@@ -42,14 +50,21 @@ class CepGratis
      * Search CEP on all providers.
      *
      * @param string $cep CEP
-     *
+     * @param array $options
      * @return Address
+     * @throws CepGratisInvalidParameterException
+     * @throws CepGratisTimeoutException
      */
-    public static function search($cep)
+    public static function search(string $cep, array $options = [])
     {
         $cepGratis = new self();
+        $cepGratis->options = $options;
+
         $cepGratis->addProvider(new ViaCepProvider());
         $cepGratis->addProvider(new CorreiosProvider());
+        $cepGratis->addProvider(new WidenetProvider());
+        $cepGratis->addProvider(new CepAbertoProvider());
+        $cepGratis->addProvider(new RepublicaVirtualProvider());
 
         $address = $cepGratis->resolve($cep);
 
@@ -60,8 +75,9 @@ class CepGratis
      * Performs provider CEP search.
      *
      * @param string $cep CEP
-     *
-     * @return Address
+     * @return Contracts\Address
+     * @throws CepGratisInvalidParameterException
+     * @throws CepGratisTimeoutException
      */
     public function resolve($cep)
     {
@@ -80,7 +96,7 @@ class CepGratis
 
         do {
             foreach ($this->providers as $provider) {
-                $address = $provider->getAddress($cep, $this->client);
+                $address = $provider->getAddress($cep, $this->client, $this->options);
             }
 
             if ((time() - $time) >= $this->timeout) {
@@ -122,5 +138,13 @@ class CepGratis
     public function setTimeout($timeout)
     {
         $this->timeout = $timeout;
+    }
+
+    /**
+     * @param array $options
+     */
+    public function setOptions(array $options): void
+    {
+        $this->options = $options;
     }
 }
