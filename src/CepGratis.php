@@ -1,17 +1,17 @@
 <?php
 
-namespace JansenFelipe\CepGratis;
+namespace Prhost\CepGratis;
 
-use JansenFelipe\CepGratis\Clients\CurlHttpClient;
-use JansenFelipe\CepGratis\Contracts\HttpClientContract;
-use JansenFelipe\CepGratis\Contracts\ProviderContract;
-use JansenFelipe\CepGratis\Exceptions\CepGratisInvalidParameterException;
-use JansenFelipe\CepGratis\Exceptions\CepGratisTimeoutException;
-use JansenFelipe\CepGratis\Providers\CepAbertoProvider;
-use JansenFelipe\CepGratis\Providers\CorreiosProvider;
-use JansenFelipe\CepGratis\Providers\RepublicaVirtualProvider;
-use JansenFelipe\CepGratis\Providers\ViaCepProvider;
-use JansenFelipe\CepGratis\Providers\WidenetProvider;
+use Prhost\CepGratis\Clients\CurlHttpClient;
+use Prhost\CepGratis\Contracts\HttpClientContract;
+use Prhost\CepGratis\Contracts\ProviderContract;
+use Prhost\CepGratis\Exceptions\CepGratisInvalidParameterException;
+use Prhost\CepGratis\Exceptions\CepGratisTimeoutException;
+use Prhost\CepGratis\Providers\CepAbertoProvider;
+use Prhost\CepGratis\Providers\CorreiosProvider;
+use Prhost\CepGratis\Providers\RepublicaVirtualProvider;
+use Prhost\CepGratis\Providers\ViaCepProvider;
+use Prhost\CepGratis\Providers\WidenetProvider;
 
 /**
  * Class to query CEP.

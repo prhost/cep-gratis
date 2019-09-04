@@ -1,8 +1,8 @@
 <?php
 
-namespace JansenFelipe\CepGratis\Tests;
+namespace Prhost\CepGratis\Tests;
 
-use JansenFelipe\CepGratis\CepGratis;
+use Prhost\CepGratis\CepGratis;
 use PHPUnit_Framework_TestCase;
 
 class CepGratisTest extends PHPUnit_Framework_TestCase

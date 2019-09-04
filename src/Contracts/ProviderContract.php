@@ -1,6 +1,6 @@
 <?php
 
-namespace JansenFelipe\CepGratis\Contracts;
+namespace Prhost\CepGratis\Contracts;
 
 interface ProviderContract
 {

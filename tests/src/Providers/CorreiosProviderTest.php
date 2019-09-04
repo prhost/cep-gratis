@@ -1,10 +1,10 @@
 <?php
 
-namespace JansenFelipe\CepGratis\Tests\Providers;
+namespace Prhost\CepGratis\Tests\Providers;
 
-use JansenFelipe\CepGratis\Contracts\HttpClientContract;
-use JansenFelipe\CepGratis\Providers\CorreiosProvider;
-use JansenFelipe\CepGratis\Tests\Util;
+use Prhost\CepGratis\Contracts\HttpClientContract;
+use Prhost\CepGratis\Providers\CorreiosProvider;
+use Prhost\CepGratis\Tests\Util;
 use PHPUnit_Framework_TestCase;
 
 class CorreiosProviderTest extends PHPUnit_Framework_TestCase

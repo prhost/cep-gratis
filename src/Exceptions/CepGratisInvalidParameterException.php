@@ -1,6 +1,6 @@
 <?php
 
-namespace JansenFelipe\CepGratis\Exceptions;
+namespace Prhost\CepGratis\Exceptions;
 
 /**
  * CepGratisInvalidParameterException.

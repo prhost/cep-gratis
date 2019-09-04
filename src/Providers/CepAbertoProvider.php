@@ -1,10 +1,10 @@
 <?php
 
-namespace JansenFelipe\CepGratis\Providers;
+namespace Prhost\CepGratis\Providers;
 
-use JansenFelipe\CepGratis\Address;
-use JansenFelipe\CepGratis\Contracts\HttpClientContract;
-use JansenFelipe\CepGratis\Contracts\ProviderContract;
+use Prhost\CepGratis\Address;
+use Prhost\CepGratis\Contracts\HttpClientContract;
+use Prhost\CepGratis\Contracts\ProviderContract;
 
 class CepAbertoProvider implements ProviderContract
 {

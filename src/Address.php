@@ -1,6 +1,6 @@
 <?php
 
-namespace JansenFelipe\CepGratis;
+namespace Prhost\CepGratis;
 
 class Address
 {

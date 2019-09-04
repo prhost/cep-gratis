@@ -17,7 +17,7 @@ A library irá retornar para você a resposta mais rápida, aumentando assim a p
 Adicione a library
 
 ```shell
-$ composer require jansenfelipe/cep-gratis
+$ composer require Prhost/cep-gratis
 ```
     
 Adicione o autoload.php do composer no seu arquivo PHP.
@@ -29,7 +29,7 @@ require_once 'vendor/autoload.php';
 Agora basta chamar o método `CepGratis::search($cep)`
 
 ```php
-use JansenFelipe\CepGratis\CepGratis;
+use Prhost\CepGratis\CepGratis;
 
 $address = CepGratis::search('31030080'); 
 ```
@@ -37,7 +37,7 @@ $address = CepGratis::search('31030080');
 Um exemplo passando opções como o token do CEP Aberto
 
 ```php
-use JansenFelipe\CepGratis\CepGratis;
+use Prhost\CepGratis\CepGratis;
 
 $address = CepGratis::search('31030080', ['token' => '123abc']); 
 ```
@@ -45,8 +45,8 @@ $address = CepGratis::search('31030080', ['token' => '123abc']);
 Outras formas:
 
 ```php
-use JansenFelipe\CepGratis\CepGratis;
-use JansenFelipe\CepGratis\Providers\CepAbertoProvider;
+use Prhost\CepGratis\CepGratis;
+use Prhost\CepGratis\Providers\CepAbertoProvider;
 
 $cepGratis = new CepGratis();
 $cepGratis->setOptions(['token' => 'f944751e6dd14d7a40bf18d4d8df1741']);

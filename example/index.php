@@ -2,7 +2,7 @@
 
 require_once '../vendor/autoload.php';
 
-use JansenFelipe\CepGratis\CepGratis;
+use Prhost\CepGratis\CepGratis;
 
 if (isset($_POST['cep'])) {
     $dados = CepGratis::search($_POST['cep']);
