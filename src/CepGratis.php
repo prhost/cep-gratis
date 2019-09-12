@@ -29,7 +29,7 @@ class CepGratis
     private $providers = [];
 
     /**
-     * @var int
+     * @var int in seconds
      */
     private $timeout = 5;
 
@@ -51,14 +51,16 @@ class CepGratis
      *
      * @param string $cep CEP
      * @param array $options
+     * @param int $timeout in seconds (optional)
      * @return Address
      * @throws CepGratisInvalidParameterException
      * @throws CepGratisTimeoutException
      */
-    public static function search(string $cep, array $options = [])
+    public static function search(string $cep, array $options = [], int $timeout = null)
     {
         $cepGratis = new self();
         $cepGratis->options = $options;
+        $cepGratis->timeout = $timeout ? $timeout : $cepGratis->timeout;
 
         $cepGratis->addProvider(new ViaCepProvider());
         $cepGratis->addProvider(new CorreiosProvider());
@@ -81,6 +83,8 @@ class CepGratis
      */
     public function resolve($cep)
     {
+        $cep = $this->clearCep($cep);
+
         if (strlen($cep) != 8 && filter_var($cep, FILTER_VALIDATE_INT) === false) {
             throw new CepGratisInvalidParameterException('CEP is invalid');
         }
@@ -97,6 +101,13 @@ class CepGratis
         do {
             foreach ($this->providers as $provider) {
                 $address = $provider->getAddress($cep, $this->client, $this->options);
+                if (!is_null($address)) {
+                    break;
+                }
+            }
+
+            if (!is_null($address)) {
+                break;
             }
 
             if ((time() - $time) >= $this->timeout) {
@@ -146,5 +157,16 @@ class CepGratis
     public function setOptions(array $options): void
     {
         $this->options = $options;
+    }
+
+    /**
+     * Limpa os caracteres especiais do CEP
+     *
+     * @param string $cep
+     * @return string
+     */
+    protected function clearCep(string $cep): string
+    {
+        return preg_replace('#[^0-9]#', '', $cep);
     }
 }
