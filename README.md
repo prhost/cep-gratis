@@ -39,7 +39,11 @@ Um exemplo passando opções como o token do CEP Aberto
 ```php
 use Prhost\CepGratis\CepGratis;
 
-$address = CepGratis::search('31030080', ['token' => '123abc']); 
+$cep = '31030080';
+$options = ['token' => '123abc'];
+$timeout = 15; //segundos
+
+$address = CepGratis::search($cep, $options, $timeout); 
 ```
 
 Outras formas:
