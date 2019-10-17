@@ -18,13 +18,15 @@ class ViaCepProvider implements ProviderContract
         if (!is_null($response)) {
             $data = json_decode($response, true);
 
-            return Address::create([
-                'zipcode'      => $cep,
-                'street'       => $data['logradouro'],
-                'neighborhood' => $data['bairro'],
-                'city'         => $data['localidade'],
-                'state'        => $data['uf'],
-            ]);
+            if($data && is_array($data) && !isset($data['erro'])) {
+                return Address::create([
+                    'zipcode'      => $cep,
+                    'street'       => $data['logradouro'],
+                    'neighborhood' => $data['bairro'],
+                    'city'         => $data['localidade'],
+                    'state'        => $data['uf'],
+                ]);
+            }
         }
     }
 }
