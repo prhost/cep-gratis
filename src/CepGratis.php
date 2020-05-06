@@ -7,11 +7,11 @@ use Prhost\CepGratis\Contracts\HttpClientContract;
 use Prhost\CepGratis\Contracts\ProviderContract;
 use Prhost\CepGratis\Exceptions\CepGratisInvalidParameterException;
 use Prhost\CepGratis\Exceptions\CepGratisTimeoutException;
+use Prhost\CepGratis\Providers\ApiCepProvider;
 use Prhost\CepGratis\Providers\CepAbertoProvider;
 use Prhost\CepGratis\Providers\CorreiosProvider;
 use Prhost\CepGratis\Providers\RepublicaVirtualProvider;
 use Prhost\CepGratis\Providers\ViaCepProvider;
-use Prhost\CepGratis\Providers\WidenetProvider;
 
 /**
  * Class to query CEP.
@@ -64,7 +64,7 @@ class CepGratis
 
         $cepGratis->addProvider(new ViaCepProvider());
         $cepGratis->addProvider(new CorreiosProvider());
-        $cepGratis->addProvider(new WidenetProvider());
+        $cepGratis->addProvider(new ApiCepProvider());
         $cepGratis->addProvider(new CepAbertoProvider());
         $cepGratis->addProvider(new RepublicaVirtualProvider());
 
