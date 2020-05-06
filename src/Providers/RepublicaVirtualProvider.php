@@ -21,7 +21,7 @@ class RepublicaVirtualProvider implements ProviderContract
 
                 return Address::create([
                     'zipcode'      => $cep,
-                    'street'       => $content->tipo_logradouro . ' ' . $content->logradouro,
+                    'street'       => trim($content->tipo_logradouro . ' ' . $content->logradouro),
                     'neighborhood' => $content->bairro,
                     'city'         => $content->cidade,
                     'state'        => $content->uf,

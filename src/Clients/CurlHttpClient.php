@@ -80,6 +80,7 @@ class CurlHttpClient implements HttpClientContract
         curl_setopt_array($curl, [
             CURLOPT_URL            => $uri,
             CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_SSL_VERIFYPEER => false
         ]);
 
         if ($this->headers) {

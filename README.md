@@ -7,7 +7,7 @@ Para evitar problemas com indisponibilidade de serviços, a consulta é realizad
 * [Correios](http://www.buscacep.correios.com.br/sistemas/buscacep/)
 * [Viacep](https://viacep.com.br/)
 * [CEP Aberto](http://cepaberto.com/)
-* [Widenet](https://apps.widenet.com.br/busca-cep/api-de-consulta)
+* [Api CEP (Antigo Widenet)](https://apicep.com/)
 * [Republica Virtual](https://www.republicavirtual.com.br/cep/)
 
 A library irá retornar para você a resposta mais rápida, aumentando assim a performance da consulta.
