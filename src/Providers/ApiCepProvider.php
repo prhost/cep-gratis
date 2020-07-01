@@ -23,7 +23,7 @@ class ApiCepProvider implements ProviderContract
                 }
 
                 $address = '';
-                if ($content->address) {
+                if (property_exists($content, 'address') && $content->address) {
                     $address = trim(explode('- até', $content->address)[0] ?? '');
                     $address = trim(explode('- de', $address)[0] ?? '');
                 }
