@@ -77,7 +77,7 @@ class CepGratis
      * Performs provider CEP search.
      *
      * @param string $cep CEP
-     * @return Contracts\Address
+     * @return Address
      * @throws CepGratisInvalidParameterException
      * @throws CepGratisTimeoutException
      */
