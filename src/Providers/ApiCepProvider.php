@@ -31,9 +31,9 @@ class ApiCepProvider implements ProviderContract
                 return Address::create([
                     'zipcode'      => $cep,
                     'street'       => $address,
-                    'neighborhood' => $content->district,
-                    'city'         => $content->city,
-                    'state'        => $content->state,
+                    'neighborhood' => property_exists($content, 'district') ? $content->district : '',
+                    'city'         => property_exists($content, 'city') ? $content->city : '',
+                    'state'        => property_exists($content, 'state') ? $content->state : '',
                 ]);
             }
         }
